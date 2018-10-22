@@ -1,0 +1,118 @@
+﻿<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<div class="container">
+    <div class="row">
+        <h2>Account setting</h2>
+
+        <div class="col-md-7 ">
+            <div class="panel panel-default">
+                <div class="panel-heading">  <h4>User Profile</h4></div>
+                <div class="panel-body">
+
+                    <div class="box box-info">
+
+                        <div class="box-body">
+                            <div class="col-sm-6">
+                                <div align="center">
+                                    <img alt="User Pic" src="hua.jpg" id="profile-image1" class="img-circle img-responsive">
+
+                                    <input id="profile-image-upload" class="hidden" type="file">
+                                    <div style="color:#999;">click here to change profile image</div>
+
+                                </div>
+                                <br>
+
+                                <!-- /input-group -->
+                            </div>
+                            <div class="col-sm-6">
+                                <h4 style="color:#00b1b1;">NAME </h4>
+                                <span>Occupation</span>
+                                <br>
+                                <span>xx/xx/xxxx</span>
+                            </div>
+                            <div class="clearfix"></div>
+                            <hr style="margin:5px 0 5px 0;">
+
+                            <div class="col-sm-5 col-xs-6 tital ">1st Preference:</div>
+                            <div class="col-sm-7 col-xs-6 ">
+                                <input type="text" placeholder="Select your favorite genre" class="sel1" list="productName" />
+                                <datalist id="productName">
+                                    <option value="Horror"></option>
+                                    <option value="Romantic"></option>
+                                    <option value="Action"></option>
+                                    <option value="Mystery"></option>
+                                    <option value="Fantasy"></option>
+                                    <option value="Crime"></option>
+                                    <option value="Drama"></option>
+                                    <option value="Superhero"></option>
+                                    <option value="Science"></option>
+                                    <option value="Disaster"></option>
+                                    <option value="Sports"></option>
+                                    <option value="Musical"></option>
+                                    <option value="Documentary"></option>
+                                    <option value="War"></option>
+                                    <option value="Thriller"></option>
+                                </datalist>
+                            </div>
+                            <div class="col-sm-5 col-xs-6 tital ">2nd Preference:</div>
+                            <div class="col-sm-7 col-xs-6 ">
+                                <input type="text" placeholder="Select your favorite genre" class="sel1" list="productName" />
+                                <datalist id="productName">
+                                    <option value="Horror"></option>
+                                    <option value="Romantic"></option>
+                                    <option value="Action"></option>
+                                    <option value="Mystery"></option>
+                                    <option value="Fantasy"></option>
+                                    <option value="Crime"></option>
+                                    <option value="Drama"></option>
+                                    <option value="Superhero"></option>
+                                    <option value="Science"></option>
+                                    <option value="Disaster"></option>
+                                    <option value="Sports"></option>
+                                    <option value="Musical"></option>
+                                    <option value="Documentary"></option>
+                                    <option value="War"></option>
+                                    <option value="Thriller"></option>
+                                </datalist>
+                            </div>
+                            <div class="col-sm-5 col-xs-6 tital ">3rd Preference:</div>
+                            <div class="col-sm-7 col-xs-6 ">
+                                <input type="text" placeholder="Select your favorite genre" class="sel1" list="productName" />
+                                <datalist id="productName">
+                                    <option value="Horror"></option>
+                                    <option value="Romantic"></option>
+                                    <option value="Action"></option>
+                                    <option value="Mystery"></option>
+                                    <option value="Fantasy"></option>
+                                    <option value="Crime"></option>
+                                    <option value="Drama"></option>
+                                    <option value="Superhero"></option>
+                                    <option value="Science"></option>
+                                    <option value="Disaster"></option>
+                                    <option value="Sports"></option>
+                                    <option value="Musical"></option>
+                                    <option value="Documentary"></option>
+                                    <option value="War"></option>
+                                    <option value="Thriller"></option>
+                                </datalist>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <script>
+            $(function () {
+                $('#profile-image1').on('click', function () {
+                    $('#profile-image-upload').click();
+                });
+            });
+        </script>
+
+    </div>
+</div>
