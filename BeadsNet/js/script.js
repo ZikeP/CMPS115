@@ -10,7 +10,7 @@ $(function(){
 function search(){
 	$('#results').html('');
 	$('#buttons').html('');
-	
+
 	q = $('#query').val();
 
 	$.get(
@@ -60,3 +60,33 @@ function getOutput(item){
 	return output;
 }
 	
+
+
+function searchtag(keyword){
+	$('#results').html('');
+	$('#buttons').html('');
+
+	q = keyword;
+
+	$.get(
+		"https://www.googleapis.com/youtube/v3/search",{
+			part: 'snippet, id',
+			q: q,
+			type: 'video',
+			maxResults: 5,
+		key: 'AIzaSyACKXDzqV-oux04qeZLl2APoutqjWVRmU0'},
+		function(data){
+			var nextPageToken = data.nextPageToken;
+			var prevPageToken = data.prevPageToken;
+			
+			console.log(data);
+			
+			$.each(data.items, function(i, item){
+				var output = getOutput(item);
+				
+				$('#results').append(output);
+			});
+		}
+		
+	);
+}
