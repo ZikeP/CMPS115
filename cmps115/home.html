@@ -2,8 +2,6 @@
 <html>
 <head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="js/script.js"></script>
 <style>
 * {box-sizing: border-box;}
 
@@ -13,9 +11,9 @@ body {
 }
 
 body::after {
-  background: url(AnimeBackground.jpg);
+  background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1540688038&di=4fd97c5649e40d882e424d834a41b7d6&imgtype=jpg&er=1&src=http%3A%2F%2Fi-3.497.com%2F2016%2F10%2F13%2Fa1e63eb0-f052-4a35-bb10-4fa6b4e0459c.jpg);
   content: "";
-  opacity: 0.3;
+  opacity: 0.2;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -26,9 +24,8 @@ body::after {
 
 .tags {
     position:absolute;
-    left:35%;
-    top:10%;  
-  
+    left:38%;
+    top:40%;    
 }
 
 .button{
@@ -44,10 +41,11 @@ body::after {
     cursor: pointer;
 }
 
+
 .topnav {
     position:absolute;
-    left:35%;
-    top:5%;
+    left:30%;
+    top:25%;
     
   overflow: hidden;
   background-color: #e9e9e9;
@@ -77,7 +75,7 @@ body::after {
   float: right;
 }
 
-.topnav input[type=search] {
+.topnav input[type=text] {
   padding: 6px;
   margin-top: 8px;
   font-size: 17px;
@@ -99,54 +97,13 @@ body::after {
   background: #ccc;
 }
 
-section{
-	padding:30px 20px 20px 20px
-}
 
-.clearfix{
-	clear:both;
-}
-
-
-#result li{
-	padding: 30px 0;
-	border-bottom:1px #ccc dotted;
-	list-style:none;
-	overflow:auto;
-}
-			
-.list-left{
-	float: left;
-	width:20%;
-}
-			
-.list-left img{
-	width:100%;
-	padding:5px;
-	border:solid #ccc 1px;
-}
-			
-.list-right{
-	float:right;
-	width:78%;
-}
-			
-.cTitle{
-	color: #dd2826;
-}
-
-#container{
-	top: 50px;
-	width:740px;
-	margin-top: 10%;
-	margin-left: 32%;
-}
 
 @media screen and (max-width: 600px) {
   .topnav .search-container {
     float: none;
   }
-  .topnav a, .topnav input[type=search], .topnav .search-container button {
+  .topnav a, .topnav input[type=text], .topnav .search-container button {
     float: none;
     display: block;
     text-align: left;
@@ -154,7 +111,7 @@ section{
     margin: 0;
     padding: 14px;
   }
-  .topnav input[type=search] {
+  .topnav input[type=text] {
     border: 1px solid #ccc;  
   }
 }
@@ -162,29 +119,32 @@ section{
 </head>
 <body>
 
+
  <a href="login.html" class="button">Login</a>
 
+
+
 <div class="topnav">
-  <a href="home.html">Home</a>
+  <a class="active" href="home.html">Home</a>
   <a href="movies.html">Movies</a>
-  <a class="active" href="anime.html">Anime</a>
+  <a href="anime.html">Anime</a>
   <div class="search-container">
-    <form id ="search-form" name="search-form" onsubmit="return search()">
-      <input type="search" id="query" placeholder="Search.." name="searchBar">
-      <button type="submit" id="search-btn"><i class="fa fa-search" value=""></i></button>
+    <form action="/action_page.php">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
     </form>
   </div>
 </div>
 
 
 
-<div class="tags">
+<div class="tags"style="padding-left:16px">
 
-  <h2 style="padding-left: 150px">Otaku Wanderland</h2>
+  <h2>Start your bizarre adventure</h2>
 <a href="result.html">Horror</a>   &nbsp;
 <a href="result.html">Romantic</a>   &nbsp;
 <a href="result.html">Action</a>   &nbsp;
-<a href="result.html">Mystery</a> &nbsp;
+<a href="result.html">Mystery</a> <br />
 <a href="result.html">Fantasy</a> &nbsp;
 <a href="result.html">Crime</a> &nbsp;
 <a href="result.html">Drama</a> &nbsp;
@@ -192,7 +152,7 @@ section{
 <a href="result.html">Science</a> &nbsp;
 <a href="result.html">Disaster</a> &nbsp;
 <a href="result.html">Sports</a> &nbsp;
-<a href="result.html">Musical</a> &nbsp;
+<a href="result.html">Musical</a> <br />
 <a href="result.html">Documentary</a> &nbsp;
 <a href="result.html">war</a> &nbsp;
 <a href="result.html">Thriller</a> &nbsp;
@@ -200,11 +160,7 @@ section{
 
 </div>
 
-<div id="container">
-	<section>
-		<ul id="results"></ul>
-	</section>
-</div>
+
 
 </body>
 </html>
