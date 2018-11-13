@@ -14,6 +14,11 @@ $user_password = $_POST["password"];
 $sql="insert into user_info (user_name, password) values ('$user_id', '$user_password')";
 
 $res=$pdo->exec($sql);
+$sql = "select id from user_info where user_name = '$user_id'";
 
-echo '影响行数：'.$res;
+$res = $pdo->query($sql);
+foreach ($res as $row){
+	$this_id = $row[id];
+}
+echo "Success! Thank you for choosing Beadsnet, $user_id!"
 ?>
