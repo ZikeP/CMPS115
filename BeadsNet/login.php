@@ -7,13 +7,6 @@ $dsn = "mysql:host={$dbhost};port={$dbport};dbname={$dbname}";
 $username = $_SERVER['RDS_USERNAME'];
 $password = $_SERVER['RDS_PASSWORD'];
 $pdo = new PDO($dsn, $username, $password);
-
-$user_id = $_POST["email"];
-$user_password = $_POST["password"];
-
-$sql="insert into user_info (user_name, password) values ('$user_id', '$user_password')";
-
-$res=$pdo->exec($sql);
-
-echo '影响行数：'.$res;
+$sql = 'SELECT id, user_name, password From user_info';
+include("login.html")
 ?>
