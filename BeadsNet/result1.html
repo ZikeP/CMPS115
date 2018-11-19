@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/script.js"></script>
+<style>
+
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    border-color: #666;
+    width: 80%;
+}
+
+td, th {
+    border: 1px solid #c7c7c7;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.header {
+  background-color: #000000;
+  padding: 30px;
+}
+.headersub{
+  background-color: #000000;
+  margin-top: 55px;
+}
+
+.buttons{
+  float: right;
+  background-color: #b2b2b2;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border-style: solid;
+  border-color: #ffffff;
+  cursor: pointer;
+  width: 10%;
+  opacity: 0.9;
+  font-size: 15px;
+}
+
+
+.buttons:hover {
+    background-color: #ddd;
+}
+
+.buttons.active {
+    background-color: #666;
+    color: white;
+}
+}
+
+</style>
+</head>
+<body>
+<div class = "header" >
+  <div class = "headersub">
+      <img src = "image\logo_1.png" width= "150px" height="30px" margin-top= "55px">
+  </div>
+</div>
+
+<div id = "buttons">
+  <th>You searched for "Avenger"</th>
+  <button class="buttons" onclick="location.href='home.html';">Home</button>
+  <button class="buttons" onclick="location.href='login.html';">Log in</button>
+  <button class="buttons" onclick=""><i class="fa fa-th-large"></i> Net</button>
+  <button class="buttons active" onclick=""><i class="fa fa-bars"></i> Table </button> 
+</div>
+
+<div id = "container">
+  <section>
+    <u1 id = "posters"></u1>
+  </section>
+</div>
+
+<div id="container">
+  <section>
+    <ul id="results"></ul>
+  </section>
+</div>
+
+<script type="text/javascript">
+  
+  var container = document.getElementById("buttons");
+  var btns = container.getElementsByClassName("buttons");
+  for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+</script>
+
+</body>
+</html>

@@ -6,12 +6,10 @@
 <script src="js/script.js"></script>
 <style>
 * {box-sizing: border-box;}
-
 body {     
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
-
 body::after {
   background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1540688038&di=4fd97c5649e40d882e424d834a41b7d6&imgtype=jpg&er=1&src=http%3A%2F%2Fi-3.497.com%2F2016%2F10%2F13%2Fa1e63eb0-f052-4a35-bb10-4fa6b4e0459c.jpg);
   content: "";
@@ -23,13 +21,11 @@ body::after {
   left: 0;
   z-index: -1;   
 }
-
 .tags {
     position:absolute;
     left:35%;
     top:10%;    
 }
-
 .button{
     background-color: #008CBA;
     border: none;
@@ -42,8 +38,6 @@ body::after {
     margin: 4px 2px;
     cursor: pointer;
 }
-
-
 .topnav {
     position:absolute;
     left:35%;
@@ -52,7 +46,6 @@ body::after {
   overflow: hidden;
   background-color: #e9e9e9;
 }
-
 .topnav a {
   float: left;
   display: block;
@@ -62,28 +55,23 @@ body::after {
   text-decoration: none;
   font-size: 17px;
 }
-
 .topnav a:hover {
   background-color: #ddd;
   color: black;
 }
-
 .topnav a.active {
   background-color: #2196F3;
   color: white;
 }
-
 .topnav .search-container {
   float: right;
 }
-
 .topnav input[type=search] {
   padding: 6px;
   margin-top: 8px;
   font-size: 17px;
   border: none;
 }
-
 .topnav .search-container button {
   float: right;
   padding: 6px 10px;
@@ -94,54 +82,47 @@ body::after {
   border: none;
   cursor: pointer;
 }
-
 .topnav .search-container button:hover {
   background: #ccc;
 }
-
 section{
-	padding:30px 20px 20px 20px
+  padding:30px 20px 20px 20px
 }
-
 .clearfix{
-	clear:both;
+  clear:both;
 }
-
-
 #result li{
-	padding: 30px 0;
-	border-bottom:1px #ccc dotted;
-	list-style:none;
-	overflow:auto;
+  padding: 30px 0;
+  border-bottom:1px #ccc dotted;
+  list-style:none;
+  overflow:auto;
 }
-			
+      
 .list-left{
-	float: left;
-	width:20%;
+  float: left;
+  width:20%;
 }
-			
+      
 .list-left img{
-	width:100%;
-	padding:5px;
-	border:solid #ccc 1px;
+  width:100%;
+  padding:5px;
+  border:solid #ccc 1px;
 }
-			
+      
 .list-right{
-	float:right;
-	width:78%;
+  float:right;
+  width:78%;
 }
-			
+      
 .cTitle{
-	color: #dd2826;
+  color: #dd2826;
 }
-
 #container{
-	top: 50px;
-	width:740px;
-	margin-top: 8%;
-	margin-left: 32%;
+  top: 50px;
+  width:740px;
+  margin-top: 8%;
+  margin-left: 32%;
 }
-
 @media screen and (max-width: 600px) {
   .topnav .search-container {
     float: none;
@@ -207,9 +188,9 @@ section{
 </div>
 
 <div id="container">
-	<section>
-		<ul id="results"></ul>
-	</section>
+  <section>
+    <ul id="results"></ul>
+  </section>
 </div>
 
 </body>
