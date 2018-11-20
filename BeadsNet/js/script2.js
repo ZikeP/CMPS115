@@ -1,5 +1,6 @@
 //api_key: edd37bcd78573bd6c7db2376590199f9
 
+
 $(function(){
 	$('#search-form').submit(function(e){
 		e.preventDefault();
@@ -36,10 +37,12 @@ function getOutput(result){
 	var description = result.overview;
 	var poster = result.poster_path;
 	var videoDate = result.release_date;
+
 	
 	var output = '<li>' +
 	'<div class = "list-left">' +
-	'<img src="https://image.tmdb.org/t/p/w355'+poster+'>'+
+	'<img src="https://image.tmdb.org/t/p/w500'+poster+'">' +
+	'<button>'+ '<i class="fa fa-heart">'+'</i>'+'</button>' +
 	'</div>' +
 	'<div class="list-right">' +
 	'<h3>'+title+'</h3>' +
@@ -48,6 +51,7 @@ function getOutput(result){
 	'</div>' +
 	'</li>' +
 	'<div class="clearfix"></div>' +
+	'<br/>' +
 	'';
 	
 	return output;
