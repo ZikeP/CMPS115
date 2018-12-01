@@ -170,8 +170,8 @@ section{
   <a class="active" href="movies.html">Movies</a>
   <a href="anime.html">Anime</a>
   <div class="search-container">
-
-    <form id ="search-form" name="search-form" onsubmit="search(), window.location.href='result1.html'" method="GET">
+<!--window.location.href='result1.html'-->
+    <form id ="search-form" name="search-form" onsubmit="search()" method="GET">
       <input type="search" id="query" placeholder="Search.." name="searchBar">
       <button type="submit" id="search-btn"><i class="fa fa-search" value=""></i></button>
     </form>
@@ -198,7 +198,7 @@ section{
   <button onclick = "searchtag('Sports');">Sports</button> &nbsp;
   <button onclick = "searchtag('Musical');">Musical</button> &nbsp;
   <button onclick = "searchtag('Documentary');">Documentary</button> &nbsp;
-  <button onclick = "searchtag('war');">war</button> &nbsp; 
+  <button onclick = "searchtag('war');">War</button> &nbsp; 
   <button onclick = "searchtag('Thriller');">Thriller</button> &nbsp;
   <button onclick = "searchtag('Opera');">Opera</button> &nbsp;
 
