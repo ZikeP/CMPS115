@@ -1,3 +1,5 @@
+//The api implementation of anime page 
+//Using Kitsu api for database
 
 
 $(function(){

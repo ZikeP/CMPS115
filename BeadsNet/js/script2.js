@@ -84,28 +84,3 @@ function searchtag(keyword){
 		
 	);
 }
-
-function searchanimetag(keyword){
-	$('#results').html('');
-	$('#buttons').html('');
-
-	q = keyword;
-
-	$.get(
-		"https://api.themoviedb.org/3/search/movie?",{
-		api_key: 'edd37bcd78573bd6c7db2376590199f9',
-		query: q},
-		function(data){
-			var nextPageToken = data.nextPageToken;
-			var prevPageToken = data.prevPageToken;
-			
-			console.log(data);
-			
-			$.each(data.results, function(r, result){
-				var output = getOutput(result);
-				$('#results').append(output);
-			});
-		}
-		
-	);
-}

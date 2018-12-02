@@ -1,7 +1,3 @@
-//Themoviedatabase api implementation
-//For search movies 
-//api_key: edd37bcd78573bd6c7db2376590199f9
-
 
 $(function(){
 	$('#search-form').submit(function(e){
