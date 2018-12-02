@@ -11,9 +11,10 @@ function search(){
 	$('#buttons').html('');
 
 	q = $('#query').val();
-	
+	text = "text";
+
 	$.get(
-		"https://kitsu.io/api/edge/anime?filter[text]=horror",
+		'https://kitsu.io/api/edge/anime?filter[text] = '+ q +'',
 		function(data){
 			var nextPageToken = data.nextPageToken;
 			var prevPageToken = data.prevPageToken;
