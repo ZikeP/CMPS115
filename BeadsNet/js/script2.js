@@ -2,6 +2,7 @@
 //For search movies 
 //api_key: edd37bcd78573bd6c7db2376590199f9
 
+var api = 'edd37bcd78573bd6c7db2376590199f9';
 
 $(function(){
 	$('#search-form').submit(function(e){
@@ -12,12 +13,11 @@ $(function(){
 function search(){
 	$('#results').html('');
 	$('#buttons').html('');
-
 	q = $('#query').val();
 	
 	$.get(
 		"https://api.themoviedb.org/3/search/movie?",{
-		api_key: 'edd37bcd78573bd6c7db2376590199f9',
+		api_key: api,
 		query: q},
 		function(data){
 			var nextPageToken = data.nextPageToken;
@@ -35,6 +35,7 @@ function search(){
 }
 
 function getOutput(result){
+	//get elements from api array 
 	var title = result.title;
 	var description = result.overview;
 	var poster = result.poster_path;
@@ -67,7 +68,7 @@ function searchtag(keyword){
 
 	$.get(
 		"https://api.themoviedb.org/3/search/movie?",{
-		api_key: 'edd37bcd78573bd6c7db2376590199f9',
+		api_key: api,
 		query: q},
 		function(data){
 			var nextPageToken = data.nextPageToken;
