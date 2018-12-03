@@ -2,6 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="js/net.js"></script>
 <style>
@@ -155,6 +156,60 @@ section{
     border: 1px solid #ccc;  
   }
 }
+
+  
+  .textWithBlurredBg:hover img{
+    filter:blur(2px) brightness(60%);
+    box-shadow:0 0 16px cyan;
+  }
+   
+  .textWithBlurredBg :not(img){
+    position:absolute;
+    z-index:1;
+    top: 5%;
+	left: 5%;
+	font-size: 15px;
+    width:90%;
+    text-align:center;
+    color:#fff;
+    opacity:0;
+    transition:.3s;
+  }
+  
+  .positionView{
+	position:absolute;
+	top:0%;
+	left: 0%;
+  }
+  
+  .textWithBlurredBg h3{
+    top:18%;
+	font-size: 11px;
+  }
+  
+  .textWithBlurredBg h4{
+    top:82%;
+	font-size: 12px
+  }
+  
+    .textWithBlurredBg h5{
+    top:5%;
+	font-size: 11px
+  }
+  
+    .textWithBlurredBg h6{
+    top:25%;
+	font-size: 9px
+  }
+  
+    .textWithBlurredBg h7{
+    top:84%;
+	font-size: 8px
+  }
+  
+  .textWithBlurredBg:hover :not(img){
+    opacity:1;
+  }
 </style>
 </head>
 <body>
@@ -203,22 +258,23 @@ section{
 
 </div>
 
-
-<span style="position:absolute; left: 835px; top: 560px;" id="results"></span>
-<span style="position:absolute; left: 850px; top: 305px;" id="results1"></span>
-<span style="position:absolute; left: 850px; top: 915px;" id="results2"></span>
-<span style="position:absolute; left: 1040px; top: 840px;" id="results3"></span>
-<span style="position:absolute; left: 680px; top: 840px;" id="results4"></span>
-<span style="position:absolute; left: 680px; top: 625px;" id="results5"></span>
-<span style="position:absolute; left: 1040px; top: 625px;" id="results6"></span>
-<span style="position:absolute; left: 680px; top: 415px;" id="results7"></span>
-<span style="position:absolute; left: 1040px; top: 415px;" id="results8"></span>
-<span style="position:absolute; left: 1195px; top: 815px;" id="results9"></span>
-<span style="position:absolute; left: 560px; top: 815px;" id="results10"></span>
-<span style="position:absolute; left: 560px; top: 660px;" id="results11"></span>
-<span style="position:absolute; left: 1195px; top: 660px;" id="results12"></span>
-<span style="position:absolute; left: 560px; top: 500px;" id="results13"></span>
-<span style="position:absolute; left: 1195px; top: 500px;" id="results14"></span>
+<div class = "positionView">
+	<span class="textWithBlurredBg" style="position:absolute; left: 835px; top: 560px;" id="results"></span>
+	<span class="textWithBlurredBg" style="position:absolute; left: 850px; top: 305px;" id="results1"></span>
+	<span class="textWithBlurredBg" style="position:absolute; left: 850px; top: 915px;" id="results2"></span>
+	<span class="textWithBlurredBg" style="position:absolute; left: 1040px; top: 840px;" id="results3"></span>
+	<span class="textWithBlurredBg" style="position:absolute; left: 680px; top: 840px;" id="results4"></span>
+	<span class="textWithBlurredBg" style="position:absolute; left: 680px; top: 625px;" id="results5"></span>
+	<span class="textWithBlurredBg" style="position:absolute; left: 1040px; top: 625px;" id="results6"></span>
+	<span class="textWithBlurredBg" style="position:absolute; left: 680px; top: 415px;" id="results7"></span>
+	<span class="textWithBlurredBg" style="position:absolute; left: 1040px; top: 415px;" id="results8"></span>
+	<span class="textWithBlurredBg" style="position:absolute; left: 1195px; top: 815px;" id="results9"></span>
+	<span class="textWithBlurredBg" style="position:absolute; left: 560px; top: 815px;" id="results10"></span>
+	<span class="textWithBlurredBg" style="position:absolute; left: 560px; top: 660px;" id="results11"></span>
+	<span class="textWithBlurredBg" style="position:absolute; left: 1195px; top: 660px;" id="results12"></span>
+	<span class="textWithBlurredBg" style="position:absolute; left: 560px; top: 500px;" id="results13"></span>
+	<span class="textWithBlurredBg" style="position:absolute; left: 1195px; top: 500px;" id="results14"></span>
+</div>
 
 
 </body>
