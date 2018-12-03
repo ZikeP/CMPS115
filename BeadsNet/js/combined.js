@@ -42,23 +42,39 @@ function getOutputanime(result){
 	var description = result.attributes.synopsis;
 	var poster = result.attributes.posterImage.medium;
 	var videoDate = result.attributes.startDate;
+	if(description.length > 495){
+		description = description.substring(0,495)+"...";
+	}
 
-	
-	var output = '<li>' +
-	'<div class = "list-left">' +
-	'<img src="'+poster+'">' +
-	'<button>'+ '<i class="fa fa-heart">'+'</i>'+'</button>' +
-	'</div>' +
-	'<div class="list-right">' +
-	'<h3>'+title+'</h3>' +
-	'<small>Released On '+videoDate+'</small>' +
-	'<p>'+description+'</p>' +
-	'</div>' +
-	'</li>' +
-	'<div class="clearfix"></div>' +
-	'<br/>' +
-	'';
-	
+	if(poster == null){
+		var output = '<li>' +
+		'<div class = "list-left">' +
+		'<img src="net.png">' +
+		'</div>' +
+		'<div class="list-right">' +
+		'<h3>'+title+'</h3>' +
+		'<small>Released On '+videoDate+'</small>' +
+		'<p>'+description+'</p>' +
+		'</div>' +
+		'</li>' +
+		'<div class="clearfix"></div>' +
+		'<br/>' +
+		'';
+	}else{
+		var output = '<li>' +
+		'<div class = "list-left">' +
+		'<img src="'+poster+'">' +
+		'</div>' +
+		'<div class="list-right">' +
+		'<h3>'+title+'</h3>' +
+		'<small>Released On '+videoDate+'</small>' +
+		'<p>'+description+'</p>' +
+		'</div>' +
+		'</li>' +
+		'<div class="clearfix"></div>' +
+		'<br/>' +
+		'';
+	}
 	return output;
 }
 
@@ -108,7 +124,6 @@ function search(){
 				var output = getOutputmovie(result);
 				$('#tableresults').append(output);
 			});
-
 		}
 		
 	);
@@ -120,23 +135,40 @@ function getOutputmovie(result){
 	var description = result.overview;
 	var poster = result.poster_path;
 	var videoDate = result.release_date;
+	if(description.length > 495){
+		description = description.substring(0, 495)+"...";
+	}
 
 	
-	var output = '<li>' +
-	'<div class = "list-left">' +
-	'<img src="https://image.tmdb.org/t/p/w500'+poster+'">' +
-	'<button>'+ '<i class="fa fa-heart">'+'</i>'+'</button>' +
-	'</div>' +
-	'<div class="list-right">' +
-	'<h3>'+title+'</h3>' +
-	'<small>Released On '+videoDate+'</small>' +
-	'<p>'+description+'</p>' +
-	'</div>' +
-	'</li>' +
-	'<div class="clearfix"></div>' +
-	'<br/>' +
-	'';
-	
+	if(poster == null){
+		var output = '<li>' +
+		'<div class = "list-left">' +
+		'<img src="net.png">' +
+		'</div>' +
+		'<div class="list-right">' +
+		'<h3>'+title+'</h3>' +
+		'<small>Released On '+videoDate+'</small>' +
+		'<p>'+description+'</p>' +
+		'</div>' +
+		'</li>' +
+		'<div class="clearfix"></div>' +
+		'<br/>' +
+		'';
+	}else{
+		var output = '<li>' +
+		'<div class = "list-left">' +
+		'<img src="https://image.tmdb.org/t/p/w500'+poster+'">' +
+		'</div>' +
+		'<div class="list-right">' +
+		'<h3>'+title+'</h3>' +
+		'<small>Released On '+videoDate+'</small>' +
+		'<p>'+description+'</p>' +
+		'</div>' +
+		'</li>' +
+		'<div class="clearfix"></div>' +
+		'<br/>' +
+		'';
+	}
 	return output;
 }
 
@@ -250,29 +282,61 @@ function getOutputnet(result, counter){
 	}
 	
 	if(counter == 0){
-		var output =
-		'<img src="https://image.tmdb.org/t/p/w500'+poster+'" width="200px" height="350px">'
-		+'<h2>'+title+'</h2>' +
-		'<h4>Released On '+videoDate+'</h4>' +
-		'<h3>'+description+'</h3>'
+		if(poster == null){
+			var output =
+			'<img src="net.png" width="200px" height="350px">'
+			+'<h2>'+title+'</h2>' +
+			'<h4>Released On '+videoDate+'</h4>' +
+			'<h3>'+description+'</h3>'
+		}else{
+			var output =
+			'<img src="https://image.tmdb.org/t/p/w500'+poster+'" width="200px" height="350px">'
+			+'<h2>'+title+'</h2>' +
+			'<h4>Released On '+videoDate+'</h4>' +
+			'<h3>'+description+'</h3>'
+		}
 	}else if(counter > 0 && counter <= 2 ){
-		var output =
-		'<img src="https://image.tmdb.org/t/p/w500'+poster+'" width="170px" height="250px">'
-		+'<h2>'+title+'</h2>' +
-		'<h4>Released On '+videoDate+'</h4>' +
-		'<h3>'+description+'</h3>'
+		if(poster == null){
+			var output =
+			'<img src="net.png" width="170px" height="250px">'
+			+'<h2>'+title+'</h2>' +
+			'<h4>Released On '+videoDate+'</h4>' +
+			'<h3>'+description+'</h3>'
+		}else{
+			var output =
+			'<img src="https://image.tmdb.org/t/p/w500'+poster+'" width="170px" height="250px">'
+			+'<h2>'+title+'</h2>' +
+			'<h4>Released On '+videoDate+'</h4>' +
+			'<h3>'+description+'</h3>'
+		}
 	}else if(counter > 2 && counter <= 8 ){
-		var output =
-		'<img src="https://image.tmdb.org/t/p/w500'+poster+'" width="150px" height="200px">'
-		+'<h5>'+title+'</h5>' +
-		'<h7>Released On '+videoDate+'</h7>' +
-		'<h6>'+description+'</h6>'
+		if(poster == null){
+			var output =
+			'<img src="net.png" width="150px" height="200px">'
+			+'<h5>'+title+'</h5>' +
+			'<h7>Released On '+videoDate+'</h7>' +
+			'<h6>'+description+'</h6>'
+		}else{
+			var output =
+			'<img src="https://image.tmdb.org/t/p/w500'+poster+'" width="150px" height="200px">'
+			+'<h5>'+title+'</h5>' +
+			'<h7>Released On '+videoDate+'</h7>' +
+			'<h6>'+description+'</h6>'
+		}
 	}else if(counter > 8 && counter <= 14 ){
-		var output =
-		'<img src="https://image.tmdb.org/t/p/w500'+poster+'" width="115px" height="150px">'
-		+'<h5>'+title+'</h5>' +
-		'<h7>Released On '+videoDate+'</h7>' +
-		'<h6>'+description+'</h6>'
+		if(poster == null){
+			var output =
+			'<img src="net.png" width="115px" height="150px">'
+			+'<h5>'+title+'</h5>' +
+			'<h7>Released On '+videoDate+'</h7>' +
+			'<h6>'+description+'</h6>'
+		}else{
+			var output =
+			'<img src="https://image.tmdb.org/t/p/w500'+poster+'" width="115px" height="150px">'
+			+'<h5>'+title+'</h5>' +
+			'<h7>Released On '+videoDate+'</h7>' +
+			'<h6>'+description+'</h6>'
+		}
 	}
 	
 	return output;
@@ -417,29 +481,61 @@ function getOutputanimenet(result, counter){
 	}
 	
 	if(counter == 0){
-		var output =
-		'<img src="'+poster+'" width="200px" height="350px">'
-		+'<h2>'+title+'</h2>' +
-		'<h4>Released On '+videoDate+'</h4>' +
-		'<h3>'+description+'</h3>'
+		if(poster == null){
+			var output =
+			'<img src="net.png" width="200px" height="350px">'
+			+'<h2>'+title+'</h2>' +
+			'<h4>Released On '+videoDate+'</h4>' +
+			'<h3>'+description+'</h3>'
+		}else{
+			var output =
+			'<img src="'+poster+'" width="200px" height="350px">'
+			+'<h2>'+title+'</h2>' +
+			'<h4>Released On '+videoDate+'</h4>' +
+			'<h3>'+description+'</h3>'
+		}
 	}else if(counter > 0 && counter <= 2 ){
-		var output =
-		'<img src="'+poster+'" width="170px" height="250px">'
-		+'<h2>'+title+'</h2>' +
-		'<h4>Released On '+videoDate+'</h4>' +
-		'<h3>'+description+'</h3>'
+		if(poster == null){
+			var output =
+			'<img src="net.png" width="170px" height="250px">'
+			+'<h2>'+title+'</h2>' +
+			'<h4>Released On '+videoDate+'</h4>' +
+			'<h3>'+description+'</h3>'
+		}else{
+			var output =
+			'<img src="'+poster+'" width="170px" height="250px">'
+			+'<h2>'+title+'</h2>' +
+			'<h4>Released On '+videoDate+'</h4>' +
+			'<h3>'+description+'</h3>'
+		}
 	}else if(counter > 2 && counter <= 8 ){
-		var output =
-		'<img src="'+poster+'" width="150px" height="200px">'
-		+'<h5>'+title+'</h5>' +
-		'<h7>Released On '+videoDate+'</h7>' +
-		'<h6>'+description+'</h6>'
+		if(poster == null){
+			var output =
+			'<img src="net.png" width="150px" height="200px">'
+			+'<h5>'+title+'</h5>' +
+			'<h7>Released On '+videoDate+'</h7>' +
+			'<h6>'+description+'</h6>'
+		}else{
+			var output =
+			'<img src="'+poster+'" width="150px" height="200px">'
+			+'<h5>'+title+'</h5>' +
+			'<h7>Released On '+videoDate+'</h7>' +
+			'<h6>'+description+'</h6>'
+		}
 	}else if(counter > 8 && counter <= 14 ){
-		var output =
-		'<img src="'+poster+'" width="115px" height="150px">'
-		+'<h5>'+title+'</h5>' +
-		'<h7>Released On '+videoDate+'</h7>' +
-		'<h6>'+description+'</h6>'
+		if(poster == null){
+			var output =
+			'<img src="net.png" width="115px" height="150px">'
+			+'<h5>'+title+'</h5>' +
+			'<h7>Released On '+videoDate+'</h7>' +
+			'<h6>'+description+'</h6>'
+		}else{
+			var output =
+			'<img src="'+poster+'" width="115px" height="150px">'
+			+'<h5>'+title+'</h5>' +
+			'<h7>Released On '+videoDate+'</h7>' +
+			'<h6>'+description+'</h6>'
+		}
 	}
 	
 	return output;
