@@ -4,24 +4,23 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="js/net.js"></script>
+<script src="js/combined.js"></script>
 <style>
 * {box-sizing: border-box;}
 body {     
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
-body::after {
-  background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1540688038&di=4fd97c5649e40d882e424d834a41b7d6&imgtype=jpg&er=1&src=http%3A%2F%2Fi-3.497.com%2F2016%2F10%2F13%2Fa1e63eb0-f052-4a35-bb10-4fa6b4e0459c.jpg);
-  content: "";
-  opacity: 0.2;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  z-index: -1;   
-}
+html { 
+        
+    background: url('image/home_background.jpeg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    }
+
 .tags {
     position:absolute;
     left:35%;
@@ -38,6 +37,15 @@ body::after {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+}
+
+.button:hover {
+    background-color: #ddd;
+}
+
+.button.active {
+    background-color: #666;
+    color: white;
 }
 .topnav {
     position:absolute;
@@ -215,8 +223,11 @@ section{
 <body>
 
 
- <a href="login.php" class="button">Login</a>
-
+<div id = "button">
+  <a href="login.html" class="button">Login</a>
+   <a id = "button" class = "button active" onclick=""><i class="fa fa-bars"></i> Table</a>
+   <a id = "button" class = "button" onclick=""><i class="fa fa-th-large"></i> Net</a>
+</div>
 
 
 <div class="topnav">
@@ -224,7 +235,7 @@ section{
   <a href="movies.html">Movies</a>
   <a href="anime.html">Anime</a>
   <div class="search-container">
-    <form id ="search-form" name="search-form" onsubmit="return search()">
+    <form id ="search-form" name="search-form" onsubmit="search(), searchnet()">
       <input type="search" id="query" placeholder="Search.." name="searchBar">
       <button type="submit" id="search-btn"><i class="fa fa-search" value=""></i></button>
     </form>
@@ -233,49 +244,74 @@ section{
 
 
 
-<div class="tags">
-
-  <h2 style="padding-left: 150px">Start your bizarre adventure</h2>
-  <button onclick = "searchtag('Horror');">Horror</button>  &nbsp;
-  <button onclick = "searchtag('Romantic');">Romantic</button>  &nbsp;
-  <button onclick = "searchtag('Action');">Action</button> &nbsp;
-  <button onclick = "searchtag('Mystery');">Mystery</button> &nbsp;
-  <button onclick = "searchtag('Fantasy');">Fantasy</button> &nbsp;
-  <button onclick = "searchtag('Crime');">Crime</button> &nbsp;
-  <button onclick = "searchtag('Drama');">Drama</button> &nbsp;
-  <button onclick = "searchtag('Superhero');">Superhero</button> &nbsp; 
+<div class="tags" >
+  <h2 style="padding-left: 150px">Netflix and Chill</h2>
+  <button onclick = "searchtag('Horror'),searchtagnet('Horror');">Horror</button>  &nbsp;
+  <button onclick = "searchtag('Romantic'),searchtagnet('Romantic');">Romantic</button>  &nbsp;
+  <button onclick = "searchtag('Action'),searchtagnet('Action');">Action</button> &nbsp;
+  <button onclick = "searchtag('Mystery'),searchtagnet('Mystery');">Mystery</button> &nbsp;
+  <button onclick = "searchtag('Fantasy'),searchtagnet('Fantasy');">Fantasy</button> &nbsp;
+  <button onclick = "searchtag('Crime'),searchtagnet('Crime');">Crime</button> &nbsp;
+  <button onclick = "searchtag('Drama'),searchtagnet('Drama');">Drama</button> &nbsp;
+  <button onclick = "searchtag('Superhero'),searchtagnet('Superhero');">Superhero</button> &nbsp; 
   <br/>
   <br/>
-  <button onclick = "searchtag('Science');">Science</button> &nbsp;
-  <button onclick = "searchtag('Disaster');">Disaster</button> &nbsp;
-  <button onclick = "searchtag('Sports');">Sports</button> &nbsp;
-  <button onclick = "searchtag('Musical');">Musical</button> &nbsp;
-  <button onclick = "searchtag('Documentary');">Documentary</button> &nbsp;
-  <button onclick = "searchtag('war');">war</button> &nbsp; 
-  <button onclick = "searchtag('Thriller');">Thriller</button> &nbsp;
-  <button onclick = "searchtag('Opera');">Opera</button> &nbsp;
-
-
+  <button onclick = "searchtag('Science'),searchtagnet('Science');">Science</button> &nbsp;
+  <button onclick = "searchtag('Disaster'),searchtagnet('Disaster');">Disaster</button> &nbsp;
+  <button onclick = "searchtag('Sports'),searchtagnet('Sports');">Sports</button> &nbsp;
+  <button onclick = "searchtag('Musical'),searchtagnet('Musical');">Musical</button> &nbsp;
+  <button onclick = "searchtag('Documentary'),searchtagnet('Documentary');">Documentary</button> &nbsp;
+  <button onclick = "searchtag('war'),searchtagnet('War');">War</button> &nbsp; 
+  <button onclick = "searchtag('Thriller'),searchtagnet('Thriller');">Thriller</button> &nbsp;
+  <button onclick = "searchtag('Opera'),searchtagnet('Opera');">Opera</button> &nbsp;
 </div>
 
-<div class = "positionView">
-	<span class="textWithBlurredBg" style="position:absolute; left: 835px; top: 560px;" id="results"></span>
-	<span class="textWithBlurredBg" style="position:absolute; left: 850px; top: 305px;" id="results1"></span>
-	<span class="textWithBlurredBg" style="position:absolute; left: 850px; top: 915px;" id="results2"></span>
-	<span class="textWithBlurredBg" style="position:absolute; left: 1040px; top: 840px;" id="results3"></span>
-	<span class="textWithBlurredBg" style="position:absolute; left: 680px; top: 840px;" id="results4"></span>
-	<span class="textWithBlurredBg" style="position:absolute; left: 680px; top: 625px;" id="results5"></span>
-	<span class="textWithBlurredBg" style="position:absolute; left: 1040px; top: 625px;" id="results6"></span>
-	<span class="textWithBlurredBg" style="position:absolute; left: 680px; top: 415px;" id="results7"></span>
-	<span class="textWithBlurredBg" style="position:absolute; left: 1040px; top: 415px;" id="results8"></span>
-	<span class="textWithBlurredBg" style="position:absolute; left: 1195px; top: 815px;" id="results9"></span>
-	<span class="textWithBlurredBg" style="position:absolute; left: 560px; top: 815px;" id="results10"></span>
-	<span class="textWithBlurredBg" style="position:absolute; left: 560px; top: 660px;" id="results11"></span>
-	<span class="textWithBlurredBg" style="position:absolute; left: 1195px; top: 660px;" id="results12"></span>
-	<span class="textWithBlurredBg" style="position:absolute; left: 560px; top: 500px;" id="results13"></span>
-	<span class="textWithBlurredBg" style="position:absolute; left: 1195px; top: 500px;" id="results14"></span>
+<div id="container" style = "display: block;">
+  <section>
+    <ul id="tableresults"></ul>
+  </section>
 </div>
 
+<div class = "positionView" id = "net" style = "display:none;">
+  <span class="textWithBlurredBg" style="position:absolute; left: 835px; top: 560px;" id="results"></span>
+  <span class="textWithBlurredBg" style="position:absolute; left: 850px; top: 305px;" id="results1"></span>
+  <span class="textWithBlurredBg" style="position:absolute; left: 850px; top: 915px;" id="results2"></span>
+  <span class="textWithBlurredBg" style="position:absolute; left: 1040px; top: 840px;" id="results3"></span>
+  <span class="textWithBlurredBg" style="position:absolute; left: 680px; top: 840px;" id="results4"></span>
+  <span class="textWithBlurredBg" style="position:absolute; left: 680px; top: 625px;" id="results5"></span>
+  <span class="textWithBlurredBg" style="position:absolute; left: 1040px; top: 625px;" id="results6"></span>
+  <span class="textWithBlurredBg" style="position:absolute; left: 680px; top: 415px;" id="results7"></span>
+  <span class="textWithBlurredBg" style="position:absolute; left: 1040px; top: 415px;" id="results8"></span>
+  <span class="textWithBlurredBg" style="position:absolute; left: 1195px; top: 815px;" id="results9"></span>
+  <span class="textWithBlurredBg" style="position:absolute; left: 560px; top: 815px;" id="results10"></span>
+  <span class="textWithBlurredBg" style="position:absolute; left: 560px; top: 660px;" id="results11"></span>
+  <span class="textWithBlurredBg" style="position:absolute; left: 1195px; top: 660px;" id="results12"></span>
+  <span class="textWithBlurredBg" style="position:absolute; left: 560px; top: 500px;" id="results13"></span>
+  <span class="textWithBlurredBg" style="position:absolute; left: 1195px; top: 500px;" id="results14"></span>
+</div>
+
+<script type="text/javascript">
+  
+  var x = document.getElementById("container");
+  var y = document.getElementById("net");
+  var container = document.getElementById("button");
+  var btns = container.getElementsByClassName("button");
+  for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+    if (x.style.display === "none") {
+        x.style.display = "block";
+        y.style.display = "none";
+    } else {
+        x.style.display = "none";
+        y.style.display = "block";
+    }
+  });
+}
+
+</script>
 
 </body>
 </html>

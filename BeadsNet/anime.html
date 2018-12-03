@@ -3,7 +3,7 @@
 <head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="js/anime.js"></script>
+<script src="js/combined.js"></script>
 <style>
 * {box-sizing: border-box;}
 
@@ -39,6 +39,14 @@ html {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+}
+.button:hover {
+    background-color: #ddd;
+}
+
+.button.active {
+    background-color: #666;
+    color: white;
 }
 
 .topnav {
@@ -155,18 +163,75 @@ section{
     border: 1px solid #ccc;  
   }
 }
+
+  .textWithBlurredBg:hover img{
+    filter:blur(2px) brightness(60%);
+    box-shadow:0 0 16px cyan;
+  }
+   
+  .textWithBlurredBg :not(img){
+    position:absolute;
+    z-index:1;
+    top: 5%;
+  left: 5%;
+  font-size: 15px;
+    width:90%;
+    text-align:center;
+    color:#fff;
+    opacity:0;
+    transition:.3s;
+  }
+  
+  .positionView{
+  position:absolute;
+  top:0%;
+  left: 0%;
+  }
+  
+  .textWithBlurredBg h3{
+    top:18%;
+  font-size: 11px;
+  }
+  
+  .textWithBlurredBg h4{
+    top:82%;
+  font-size: 12px
+  }
+  
+    .textWithBlurredBg h5{
+    top:5%;
+  font-size: 11px
+  }
+  
+    .textWithBlurredBg h6{
+    top:25%;
+  font-size: 9px
+  }
+  
+    .textWithBlurredBg h7{
+    top:84%;
+  font-size: 8px
+  }
+  
+  .textWithBlurredBg:hover :not(img){
+    opacity:1;
+  }
 </style>
 </head>
 <body>
 
- <a href="login.html" class="button">Login</a>
+<div id = "button">
+  <a href="login.html" class="button">Login</a>
+   <a id = "button" class = "button active" onclick=""><i class="fa fa-bars"></i> Table</a>
+   <a id = "button" class = "button" onclick=""><i class="fa fa-th-large"></i> Net</a>
+</div>
 
 <div class="topnav">
-  <a href="home.html">Home</a>
+  <a href="index.html">Home</a>
   <a href="movies.html">Movies</a>
   <a class="active" href="anime.html">Anime</a>
   <div class="search-container">
-    <form id ="search-form" name="search-form" onsubmit="return search()">
+    <form id ="search-form" name="search-form" onsubmit="searchanime(), searchanimenet()" method = "GET">
       <input type="search" id="query" placeholder="Search.." name="searchBar">
       <button type="submit" id="search-btn"><i class="fa fa-search" value=""></i></button>
     </form>
@@ -178,33 +243,72 @@ section{
 <div class="tags">
 
   <h2 style="padding-left: 150px">Otaku Wanderland</h2>
-  <button onclick = "searchanimetag('Horror');">Horror</button>  &nbsp;
-  <button onclick = "searchanimetag('Romance');">Romantic</button>  &nbsp;
-  <button onclick = "searchanimetag('Action');">Action</button> &nbsp;
-  <button onclick = "searchanimetag('Mystery');">Mystery</button> &nbsp;
-  <button onclick = "searchanimetag('Fantasy');">Fantasy</button> &nbsp;
-  <button onclick = "searchanimetag('Crime');">Crime</button> &nbsp;
-  <button onclick = "searchanimetag('Drama');">Drama</button> &nbsp;
-  <button onclick = "searchanimetag('Super');">Superhero</button> &nbsp; 
+  <button onclick = "searchanimetag('Horror'),searchanimetagnet('Horror');">Horror</button>  &nbsp;
+  <button onclick = "searchanimetag('Romance'),searchanimetagnet('Romance');">Romantic</button>  &nbsp;
+  <button onclick = "searchanimetag('Action'),searchanimetagnet('Action');">Action</button> &nbsp;
+  <button onclick = "searchanimetag('Mystery'),searchanimetagnet('Mystery');">Mystery</button> &nbsp;
+  <button onclick = "searchanimetag('Fantasy'),searchanimetagnet('Fantasy');">Fantasy</button> &nbsp;
+  <button onclick = "searchanimetag('Crime'),searchanimetagnet('Crime');">Crime</button> &nbsp;
+  <button onclick = "searchanimetag('Drama'),searchanimetagnet('Drama');">Drama</button> &nbsp;
+  <button onclick = "searchanimetag('Super'),searchanimetagnet('Super');">Superhero</button> &nbsp; 
   <br/>
   <br/>
-  <button onclick = "searchanimetag('Sci-fi');">Science</button> &nbsp;
-  <button onclick = "searchanimetag('Tragedy');">Tragedy</button> &nbsp;
-  <button onclick = "searchanimetag('Sports');">Sports</button> &nbsp;
-  <button onclick = "searchanimetag('Music');">Musical</button> &nbsp;
-  <button onclick = "searchanimetag('Documentary');">Documentary</button> &nbsp;
-  <button onclick = "searchanimetag('military');">war</button> &nbsp; 
-  <button onclick = "searchanimetag('Thriller');">Thriller</button> &nbsp;
-  <button onclick = "searchanimetag('Comedy');">Comedy</button> &nbsp;
+  <button onclick = "searchanimetag('Sci-fi'),searchanimetagnet('Sci-fi');">Science</button> &nbsp;
+  <button onclick = "searchanimetag('Tragedy'),searchanimetagnet('Tragedy');">Tragedy</button> &nbsp;
+  <button onclick = "searchanimetag('Sports'),searchanimetagnet('Sports');">Sports</button> &nbsp;
+  <button onclick = "searchanimetag('Music'),searchanimetagnet('Music');">Musical</button> &nbsp;
+  <button onclick = "searchanimetag('Documentary'),searchanimetagnet('Documentary');">Documentary</button> &nbsp;
+  <button onclick = "searchanimetag('military'),searchanimetagnet('military');">war</button> &nbsp; 
+  <button onclick = "searchanimetag('Thriller'),searchanimetagnet('Thriller');">Thriller</button> &nbsp;
+  <button onclick = "searchanimetag('Comedy'),searchanimetagnet('Comedy');">Comedy</button> &nbsp;
 
 
 </div>
-
-<div id="container">
-	<section>
-		<ul id="results"></ul>
-	</section>
+<div id="container" style = "display: block;">
+  <section>
+    <ul id="tableresults"></ul>
+  </section>
 </div>
 
+<div class = "positionView" id = "net" style = "display:none;">
+  <span class="textWithBlurredBg" style="position:absolute; left: 835px; top: 560px;" id="results"></span>
+  <span class="textWithBlurredBg" style="position:absolute; left: 850px; top: 305px;" id="results1"></span>
+  <span class="textWithBlurredBg" style="position:absolute; left: 850px; top: 915px;" id="results2"></span>
+  <span class="textWithBlurredBg" style="position:absolute; left: 1040px; top: 840px;" id="results3"></span>
+  <span class="textWithBlurredBg" style="position:absolute; left: 680px; top: 840px;" id="results4"></span>
+  <span class="textWithBlurredBg" style="position:absolute; left: 680px; top: 625px;" id="results5"></span>
+  <span class="textWithBlurredBg" style="position:absolute; left: 1040px; top: 625px;" id="results6"></span>
+  <span class="textWithBlurredBg" style="position:absolute; left: 680px; top: 415px;" id="results7"></span>
+  <span class="textWithBlurredBg" style="position:absolute; left: 1040px; top: 415px;" id="results8"></span>
+  <span class="textWithBlurredBg" style="position:absolute; left: 1195px; top: 815px;" id="results9"></span>
+  <span class="textWithBlurredBg" style="position:absolute; left: 560px; top: 815px;" id="results10"></span>
+  <span class="textWithBlurredBg" style="position:absolute; left: 560px; top: 660px;" id="results11"></span>
+  <span class="textWithBlurredBg" style="position:absolute; left: 1195px; top: 660px;" id="results12"></span>
+  <span class="textWithBlurredBg" style="position:absolute; left: 560px; top: 500px;" id="results13"></span>
+  <span class="textWithBlurredBg" style="position:absolute; left: 1195px; top: 500px;" id="results14"></span>
+</div>
+
+<script type="text/javascript">
+  
+  var x = document.getElementById("container");
+  var y = document.getElementById("net");
+  var container = document.getElementById("button");
+  var btns = container.getElementsByClassName("button");
+  for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+    if (x.style.display === "none") {
+        x.style.display = "block";
+        y.style.display = "none";
+    } else {
+        x.style.display = "none";
+        y.style.display = "block";
+    }
+  });
+}
+
+</script>
 </body>
 </html>
