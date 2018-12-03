@@ -2,7 +2,6 @@
 <html>
 <head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="js/combined.js"></script>
 <style>
@@ -100,13 +99,19 @@ section{
 .clearfix{
   clear:both;
 }
-#result li{
+#results li{
   padding: 30px 0;
   border-bottom:1px #ccc dotted;
   list-style:none;
   overflow:auto;
 }
-      
+#tableresults li{
+  padding: 30px 0;
+  border-bottom:1px #ccc dotted;
+  list-style:none;
+  overflow:auto;
+}
+
 .list-left{
   float: left;
   width:20%;
@@ -269,6 +274,7 @@ section{
 <div id="container" style = "display: block;">
   <section>
     <ul id="tableresults"></ul>
+    <div id ="buttons"></div>
   </section>
 </div>
 
@@ -310,7 +316,11 @@ section{
     }
   });
 }
-
+  function nextPage(){
+    query =  document.getElementById("query");
+    page =+ 1;
+    search();
+  }
 </script>
 
 </body>

@@ -96,7 +96,8 @@ function search(){
 	$.get(
 		"https://api.themoviedb.org/3/search/movie?",{
 		api_key: api,
-		query: q},
+		query: q
+		},
 		function(data){
 			var nextPageToken = data.nextPageToken;
 			var prevPageToken = data.prevPageToken;
@@ -107,6 +108,7 @@ function search(){
 				var output = getOutputmovie(result);
 				$('#tableresults').append(output);
 			});
+
 		}
 		
 	);
@@ -162,6 +164,7 @@ function searchtag(keyword){
 		
 	);
 }
+
 
 //implementation of search function in net view
 
