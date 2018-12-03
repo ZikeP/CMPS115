@@ -297,7 +297,7 @@ section{
 </div>
 
 <script type="text/javascript">
-  
+  var page = 1;
   var x = document.getElementById("container");
   var y = document.getElementById("net");
   var container = document.getElementById("button");
@@ -318,8 +318,7 @@ section{
 }
   function nextPage(){
     query =  document.getElementById("query");
-    page =+ 1;
-    search();
+    page = page + 1;
   }
 </script>
 
