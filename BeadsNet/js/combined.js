@@ -6,7 +6,9 @@ $(function(){
 
 //api key for themovie database 
 var api = 'edd37bcd78573bd6c7db2376590199f9';
-
+//page number default
+var p = 1; 
+var animepage = 0;
 //function for search animes
 //using the kitsu database
 
@@ -19,18 +21,26 @@ function searchanime(){
 
 	$.get(
 		//search anime from kitsu api database
-		'https://kitsu.io/api/edge/anime?filter[text] = '+ q +'',
+		'https://kitsu.io/api/edge/anime?filter[text] = '+ q +'page[limit]=5&page[offset]='+ animepage +'',
 		function(data){
 			var nextPageToken = data.nextPageToken;
 			var prevPageToken = data.prevPageToken;
 			
 			console.log(data);
 			
+			totalpages = data.meta.count;
 			//for each anime, get the data and call getOutput for a nice layout
 			$.each(data.data, function(r, result){
 				var output = getOutputanime(result);
 				$('#tableresults').append(output);
 			});
+			if (animepage == totalpages){
+				return;
+			}else{
+				var buttons = nextanimepage(prevPageToken, nextPageToken);
+				$('#buttons').append(buttons);				
+			}
+
 		}
 		
 	);
@@ -102,32 +112,58 @@ function searchanimetag(keyword){
 		
 	);
 }
+
+function nextanimepage(prevPageToken, nextPageToken){
+	if(!prevPageToken){
+		var btnoutput = '<div class = "button-container">'+'<button id = "next-button" class = "button" data-token = "'+nextPageToken+'" data-query ="'+q+'" onclick = "searchanime();">Next</button></div>';
+		animepage = animepage + 10;
+	}else{
+		var btnoutput = '<div class = "button-container">'+
+		'<button id = "next-button" data-token = "'+prevPageToken+'" data-query ="'+q+'" onclick = "prevPage();">Last Page </button></div>' +
+		'<button id = "next-button" data-token = "'+nextPageToken+'" data-query ="'+q+'" onclick = "nextPage();">Next Page </button></div>';
+	}
+
+	return btnoutput;
+}
+
+
 //search functions for searching the movies in table view 
 //using the movie database
+
 function search(){
 	$('#tableresults').html(''); //results return to the home page named tableresults
 	$('#buttons').html('');
 	q = $('#query').val();
-	
+
+
 	$.get(
 		"https://api.themoviedb.org/3/search/movie?",{
 		api_key: api,
 		query: q,
+		page: p
 	},
 		function(data){
 			var nextPageToken = data.nextPageToken;
 			var prevPageToken = data.prevPageToken;
 			
 			console.log(data);
-			
+			var total_page = data.total_pages; 			
 			$.each(data.results, function(r, result){
 				var output = getOutputmovie(result);
 				$('#tableresults').append(output);
 			});
+			// if there are no more next page, disable next page button 
+			if (p == total_page){
+				return;
+			}else{
+				var buttons = nextpage(prevPageToken, nextPageToken);
+				$('#buttons').append(buttons);
+			}
 		}
 		
 	);
 }
+
 
 function getOutputmovie(result){
 	//get elements from api array 
@@ -181,22 +217,35 @@ function searchtag(keyword){
 	$.get(
 		"https://api.themoviedb.org/3/search/movie?",{
 		api_key: api,
-		query: q},
+		query: q,
+	},
 		function(data){
 			var nextPageToken = data.nextPageToken;
 			var prevPageToken = data.prevPageToken;
 			
-			console.log(data);
-			
+			console.log(data);	
 			$.each(data.results, function(r, result){
 				var output = getOutputmovie(result);
 				$('#tableresults').append(output);
 			});
+
 		}
 		
 	);
 }
+// function for filp to next page
+function nextpage(prevPageToken, nextPageToken){
+	if(!prevPageToken){
+		var btnoutput = '<div class = "button-container">'+'<button id = "next-button" class = "button" data-token = "'+nextPageToken+'" data-query ="'+q+'" onclick = "nextPage(), search();">Next</button></div>';
+		p = p + 1;
+	}else{
+		var btnoutput = '<div class = "button-container">'+
+		'<button id = "next-button" data-token = "'+prevPageToken+'" data-query ="'+q+'" onclick = "prevPage();">Last Page </button></div>' +
+		'<button id = "next-button" data-token = "'+nextPageToken+'" data-query ="'+q+'" onclick = "nextPage();">Next Page </button></div>';
+	}
 
+	return btnoutput;
+}
 
 
 //implementation of search function in net view
