@@ -21,7 +21,7 @@ function searchanime(){
 
 	$.get(
 		//search anime from kitsu api database
-		'https://kitsu.io/api/edge/anime?filter[text] = '+ q +'page[limit]=5&page[offset]='+ animepage +'',
+		'https://kitsu.io/api/edge/anime?filter[text] = '+ q +'&page[offset]='+ animepage +'',
 		function(data){
 			var nextPageToken = data.nextPageToken;
 			var prevPageToken = data.prevPageToken;
@@ -114,19 +114,25 @@ function searchanimetag(keyword){
 }
 
 function nextanimepage(prevPageToken, nextPageToken){
-	if(!prevPageToken){
-		var btnoutput = '<div class = "button-container">'+'<button id = "next-button" class = "button" data-token = "'+nextPageToken+'" data-query ="'+q+'" onclick = "searchanime();">Next</button></div>';
+	if(animepage == 0){
+		var btnoutput = '<div class = "button-container">'+'<button id = "next-button" class = "button" data-token = "'+nextPageToken+'" data-query ="'+q+'" onclick = "nextPage(), searchanime();">Next</button></div>';
 		animepage = animepage + 10;
 	}else{
 		var btnoutput = '<div class = "button-container">'+
-		'<button id = "next-button" data-token = "'+prevPageToken+'" data-query ="'+q+'" onclick = "prevPage();">Last Page </button></div>' +
-		'<button id = "next-button" data-token = "'+nextPageToken+'" data-query ="'+q+'" onclick = "nextPage();">Next Page </button></div>';
+		'<div class = "button-container">'+'<button id = "next-button" class = "button" data-token = "'+prevPageToken+'" data-query ="'+q+'" onclick = "minusanime(), prevPage(),searchanime();">Last</button>'+
+		'<button id = "next-button" class = "button" data-token = "'+nextPageToken+'" data-query ="'+q+'" onclick = "addanime(), nextPage(),searchanime();">Next</button></div>'+ '</div>';
 	}
 
 	return btnoutput;
 }
 
+function minusanime(){
+	animepage = animepage - 10;
+};
 
+function addanime(){
+	animepage = animepage + 10; 
+}
 //search functions for searching the movies in table view 
 //using the movie database
 
@@ -235,19 +241,26 @@ function searchtag(keyword){
 }
 // function for filp to next page
 function nextpage(prevPageToken, nextPageToken){
-	if(!prevPageToken){
+	if(p == 1){
 		var btnoutput = '<div class = "button-container">'+'<button id = "next-button" class = "button" data-token = "'+nextPageToken+'" data-query ="'+q+'" onclick = "nextPage(), search();">Next</button></div>';
 		p = p + 1;
 	}else{
 		var btnoutput = '<div class = "button-container">'+
-		'<button id = "next-button" data-token = "'+prevPageToken+'" data-query ="'+q+'" onclick = "prevPage();">Last Page </button></div>' +
-		'<button id = "next-button" data-token = "'+nextPageToken+'" data-query ="'+q+'" onclick = "nextPage();">Next Page </button></div>';
+		'<button id = "next-button" class = "button" data-token = "'+prevPageToken+'" data-query ="'+q+'" onclick = "minus(), prevPage(), search();">Last</button>' +
+		'<button id = "next-button" class = "button" data-token = "'+nextPageToken+'" data-query ="'+q+'" onclick = "add(), nextPage(), search();">Next</button></div>';
 	}
 
 	return btnoutput;
 }
 
-
+function minus(){
+	p = p - 1;
+	animepage = animepage - 10;
+};
+function add(){
+	p = p + 1;
+	animepage = animepage + 10; 
+}
 //implementation of search function in net view
 
 function searchnet(){
