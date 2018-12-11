@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/combined.js"></script>
+</head>
+<body>
+
+<div id = "button">
+   <a id = "button" class = "button active" onclick=""><i class="fa fa-bars"></i> Table</a>
+   <a id = "button" class = "button" onclick=""><i class="fa fa-th-large"></i> Net</a>
+</div>
+
+<div class="topnav">
+  <a href="index.html">Home</a>
+  <a href="movies.html">Movies</a>
+  <a class="active" href="anime.html">Anime</a>
+  <div class="search-container">
+    <form id ="search-form" name="search-form" onsubmit="searchanime(), searchanimenet()" method = "GET">
+      <input type="search" id="query" placeholder="Search.." name="searchBar">
+      <button type="submit" id="search-btn"><i class="fa fa-search" value=""></i></button>
+    </form>
+  </div>
+</div>
+
+
+
+<div class="tags">
+
+  <h2 style="padding-left: 150px">Otaku Wanderland</h2>
+  <button onclick = "searchanimetag('Horror'),searchanimetagnet('Horror');">Horror</button>  &nbsp;
+  <button onclick = "searchanimetag('Romance'),searchanimetagnet('Romance');">Romantic</button>  &nbsp;
+  <button onclick = "searchanimetag('Action'),searchanimetagnet('Action');">Action</button> &nbsp;
+  <button onclick = "searchanimetag('Mystery'),searchanimetagnet('Mystery');">Mystery</button> &nbsp;
+  <button onclick = "searchanimetag('Fantasy'),searchanimetagnet('Fantasy');">Fantasy</button> &nbsp;
+  <button onclick = "searchanimetag('Crime'),searchanimetagnet('Crime');">Crime</button> &nbsp;
+  <button onclick = "searchanimetag('Drama'),searchanimetagnet('Drama');">Drama</button> &nbsp;
+  <button onclick = "searchanimetag('Super'),searchanimetagnet('Super');">Superhero</button> &nbsp; 
+  <br/>
+  <br/>
+  <button onclick = "searchanimetag('Sci-fi'),searchanimetagnet('Sci-fi');">Science</button> &nbsp;
+  <button onclick = "searchanimetag('Tragedy'),searchanimetagnet('Tragedy');">Tragedy</button> &nbsp;
+  <button onclick = "searchanimetag('Sports'),searchanimetagnet('Sports');">Sports</button> &nbsp;
+  <button onclick = "searchanimetag('Music'),searchanimetagnet('Music');">Musical</button> &nbsp;
+  <button onclick = "searchanimetag('Documentary'),searchanimetagnet('Documentary');">Documentary</button> &nbsp;
+  <button onclick = "searchanimetag('military'),searchanimetagnet('military');">war</button> &nbsp; 
+  <button onclick = "searchanimetag('Thriller'),searchanimetagnet('Thriller');">Thriller</button> &nbsp;
+  <button onclick = "searchanimetag('Comedy'),searchanimetagnet('Comedy');">Comedy</button> &nbsp;
+
+
+</div>
+<div id="container" style = "display: block;">
+  <section>
+    <ul id="tableresults"></ul>
+    <div id ="buttons"></div>
+  </section>
+</div>
+
+<div id="net" style = "display: none;">
+  <div class="textWithBlurredBg" style="position:absolute; left: 42%; top: 525px;" id="results0"></div>
+  <div class="textWithBlurredBg" style="position:absolute; left: 43%; top: 250px;" id="results1"></div>
+  <div class="textWithBlurredBg" style="position:absolute; left: 43%; top: 900px;" id="results2"></div>
+  <div class="textWithBlurredBg" style="position:absolute; left: 68%; top: 825px;" id="results3"></div>
+  <div class="textWithBlurredBg" style="position:absolute; left: 20%; top: 825px;" id="results4"></div>
+  <div class="textWithBlurredBg" style="position:absolute; left: 20%; top: 590px;" id="results5"></div>
+  <div class="textWithBlurredBg" style="position:absolute; left: 68%; top: 590px;" id="results6"></div>
+  <div class="textWithBlurredBg" style="position:absolute; left: 20%; top: 360px;" id="results7"></div>
+  <div class="textWithBlurredBg" style="position:absolute; left: 68%; top: 360px;" id="results8"></div>
+</div>
+
+<script type="text/javascript">
+  
+  var x = document.getElementById("container");
+  var y = document.getElementById("net");
+  var container = document.getElementById("button");
+  var btns = container.getElementsByClassName("button");
+  for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+    if (x.style.display === "none") {
+        x.style.display = "block";
+        y.style.display = "none";
+    } else {
+        x.style.display = "none";
+        y.style.display = "block";
+    }
+  });
+}
+  function nextPage(){
+    query =  document.getElementById("query");
+  }
+
+  function prevPage(){
+    query = document.getElementById("query");
+  }
+
+</script>
+</body>
+</html>

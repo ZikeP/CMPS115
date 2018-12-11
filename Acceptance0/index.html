@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/combined.js"></script>
+
+</head>
+<body>
+
+
+<div id = "button">
+   <a id = "button" class = "button active" onclick=""><i class="fa fa-bars"></i> Table</a>
+   <a id = "button" class = "button" onclick=""><i class="fa fa-th-large"></i> Net</a>
+</div>
+
+
+<div class="topnav">
+  <a class="active" href="Index.html">Home</a>
+  <a href="movies.html">Movies</a>
+  <a href="anime.html">Anime</a>
+  <div class="search-container">
+    <form id ="search-form" name="search-form" onsubmit="search(), searchnet()">
+      <input type="search" id="query" placeholder="Search.." name="searchBar">
+      <button type="submit" id="search-btn"><i class="fa fa-search" value=""></i></button>
+    </form>
+  </div>
+</div>
+
+
+
+<div class="tags" id = "tags">
+  <h2 style="padding-left: 150px">Netflix and Chill</h2>
+  <button onclick = "searchtag('Horror'),searchtagnet('Horror');">Horror</button>  &nbsp;
+  <button onclick = "searchtag('Romantic'),searchtagnet('Romantic');">Romantic</button>  &nbsp;
+  <button onclick = "searchtag('Action'),searchtagnet('Action');">Action</button> &nbsp;
+  <button onclick = "searchtag('Mystery'),searchtagnet('Mystery');">Mystery</button> &nbsp;
+  <button onclick = "searchtag('Fantasy'),searchtagnet('Fantasy');">Fantasy</button> &nbsp;
+  <button onclick = "searchtag('Crime'),searchtagnet('Crime');">Crime</button> &nbsp;
+  <button onclick = "searchtag('Drama'),searchtagnet('Drama');">Drama</button> &nbsp;
+  <button onclick = "searchtag('Superhero'),searchtagnet('Superhero');">Superhero</button> &nbsp; 
+  <br/>
+  <br/>
+  <button onclick = "searchtag('Science'),searchtagnet('Science');">Science</button> &nbsp;
+  <button onclick = "searchtag('Disaster'),searchtagnet('Disaster');">Disaster</button> &nbsp;
+  <button onclick = "searchtag('Sports'),searchtagnet('Sports');">Sports</button> &nbsp;
+  <button onclick = "searchtag('Musical'),searchtagnet('Musical');">Musical</button> &nbsp;
+  <button onclick = "searchtag('Documentary'),searchtagnet('Documentary');">Documentary</button> &nbsp;
+  <button onclick = "searchtag('war'),searchtagnet('War');">War</button> &nbsp; 
+  <button onclick = "searchtag('Thriller'),searchtagnet('Thriller');">Thriller</button> &nbsp;
+  <button onclick = "searchtag('Opera'),searchtagnet('Opera');">Opera</button> &nbsp;
+</div>
+
+<div id="container" style = "display: block;">
+  <section>
+    <ul id="tableresults"></ul>
+    <div id ="buttons"></div>
+  </section>
+</div>
+
+<div id="net" style = "display: none;">
+  <div class="textWithBlurredBg" style="position:absolute; left: 42%; top: 525px;" id="results0"></div>
+  <div class="textWithBlurredBg" style="position:absolute; left: 43%; top: 250px;" id="results1"></div>
+  <div class="textWithBlurredBg" style="position:absolute; left: 43%; top: 900px;" id="results2"></div>
+  <div class="textWithBlurredBg" style="position:absolute; left: 60%; top: 825px;" id="results3"></div>
+  <div class="textWithBlurredBg" style="position:absolute; left: 28%; top: 825px;" id="results4"></div>
+  <div class="textWithBlurredBg" style="position:absolute; left: 28%; top: 590px;" id="results5"></div>
+  <div class="textWithBlurredBg" style="position:absolute; left: 60%; top: 590px;" id="results6"></div>
+  <div class="textWithBlurredBg" style="position:absolute; left: 28%; top: 360px;" id="results7"></div>
+  <div class="textWithBlurredBg" style="position:absolute; left: 60%; top: 360px;" id="results8"></div>
+  <div class="textWithBlurredBg" style="position:absolute; left: 74%; top: 810px;" id="results9"></div>
+  <div class="textWithBlurredBg" style="position:absolute; left: 17%; top: 810px;" id="results10"></div>
+  <div class="textWithBlurredBg" style="position:absolute; left: 17%; top: 625px;" id="results11"></div>
+  <div class="textWithBlurredBg" style="position:absolute; left: 74%; top: 625px;" id="results12"></div>
+  <div class="textWithBlurredBg" style="position:absolute; left: 17%; top: 445px;" id="results13"></div>
+  <div class="textWithBlurredBg" style="position:absolute; left: 74%; top: 445px;" id="results14"></div>
+  <div class="textWithBlurredBg" style="position:absolute; left: 85%; top: 575px;" id="results15"></div>
+  <div class="textWithBlurredBg" style="position:absolute; left: 85%; top: 705px;" id="results16"></div>
+  <div class="textWithBlurredBg" style="position:absolute; left: 8%; top: 575px;" id="results17"></div>
+  <div class="textWithBlurredBg" style="position:absolute; left: 8%; top: 705px;" id="results18"></div>
+</div>
+
+<script type="text/javascript">
+  var page = 1;
+  var x = document.getElementById("container");
+  var y = document.getElementById("net");
+  var container = document.getElementById("button");
+  var btns = container.getElementsByClassName("button");
+  for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+    if (x.style.display === "none") {
+        x.style.display = "block";
+        y.style.display = "none";
+    } else {
+        x.style.display = "none";
+        y.style.display = "block";
+    }
+  });
+}
+  function nextPage(){
+    query =  document.getElementById("query");
+  }
+
+  function prevPage(){
+    query = document.getElementById("query");
+  }
+</script>
+
+</body>
+</html>
