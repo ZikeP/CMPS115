@@ -1,4 +1,5 @@
 <?php
+session_start();
 $dbhost = $_SERVER['RDS_HOSTNAME'];
 $dbport = $_SERVER['RDS_PORT'];
 $dbname = $_SERVER['RDS_DB_NAME'];
@@ -10,7 +11,7 @@ $pdo = new PDO($dsn, $username, $password);
 
 $user_id = $_POST["email"];
 $user_password = $_POST["password"];
-
+$_SESSION['USERID']=$user_id;
 $sql="insert into user_info (user_name, password) values ('$user_id', '$user_password')";
 
 $res=$pdo->exec($sql);
@@ -20,5 +21,7 @@ $res = $pdo->query($sql);
 foreach ($res as $row){
 	$this_id = $row[id];
 }
-echo "Success! Thank you for choosing Beadsnet, $user_id!"
+echo "Success! Thank you for choosing Beadsnet, ". $_SESSION['USERID'];
+$url = $_SESSION['homepage'];
+echo "<meta http-equiv="refresh" content="2;url=$url">";
 ?>
